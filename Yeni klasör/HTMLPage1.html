@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sürükle Bırak</title>
+    <style>
+        div{
+
+            border:solid;
+            width:250px;
+            height:250px;
+            margin:10px;
+            float:left;
+
+        }
+
+        img {
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+
+    <script>
+        function drag(e) {
+            e.dataTransfer.setData("text", e.target.id);
+
+        }
+        function allowDrop(e) {
+
+            e.preventDefault();
+        }
+        function drop(e) {
+
+              e.preventDefault();
+            var data = e.dataTransfer.getData("text");
+            e.target.appendChild(document.getElementById(data));
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <div id="d1" ondrop="drop(event)"ondragover="allowDrop(event)">
+        <img src="1.jpg" id="drag1" draggable="true" ondragstart="drag(event)"/>
+    </div>
+    <div id="d2" ondrop="drop(event)"ondragover="allowDrop(event)"></div>
+    <div id="d3" ondrop="drop(event)"ondragover="allowDrop(event)"></div>
+    <div id="d4" ondrop="drop(event)"ondragover="allowDrop(event)"></div>
+
+</body>
+</html>
